@@ -1,0 +1,28 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "brand",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "default": "",
+      "type": "text"
+    },
+    "Image": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": true
+    }
+  }
+}
