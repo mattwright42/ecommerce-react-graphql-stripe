@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Box, Heading, Card, Image } from 'gestalt';
+import { Container, Box, Heading, Card, Image, Text } from 'gestalt';
+import { Link } from 'react-router-dom';
 import './App.css';
 
 import Strapi from 'strapi-sdk-javascript/build/main';
@@ -45,11 +46,21 @@ class App extends Component {
           </Heading>
         </Box>
         {/* Brands */}
-        <Box display="flex" justifyContent="around">
+        <Box
+          dangerouslySetInlineStyle={{
+            __style: {
+              backgroundColor: '#d6c8ec',
+            },
+          }}
+          shape="roundedBottom"
+          wrap
+          display="flex"
+          justifyContent="around"
+        >
           {brands.map((brand) => (
-            <Box key={brand._id}>
-              <Card
-                image={
+            <Box margin={2} width={200} key={brand._id}>
+              <Card>
+                {
                   <Box height={200} width={200}>
                     <Image
                       alt="Brand"
@@ -59,7 +70,21 @@ class App extends Component {
                     />
                   </Box>
                 }
-              />
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  direction="column"
+                >
+                  <Text bold size="xl">
+                    {brand.Name}
+                  </Text>
+                  <Text>{brand.Description}</Text>
+                  <Text bold size="xl">
+                    <Link to={`/${brand._id}`}>See Brews</Link>
+                  </Text>
+                </Box>
+              </Card>
             </Box>
           ))}
         </Box>
